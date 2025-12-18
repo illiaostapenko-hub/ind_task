@@ -80,7 +80,7 @@ if filtered_df.empty:
     st.warning(f"Увага: Немає магазинів у м.{selected_city} з рейтингом >= {min_rating}")
 else:
     # Графік Plotly
-    st.subheader(f'Виторг vs Трафік у м. {selected_city}')
+    st.subheader(f'Виторг / Трафік у м. {selected_city}')
 
     fig = px.scatter(
         filtered_df,
