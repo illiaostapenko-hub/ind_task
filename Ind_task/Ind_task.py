@@ -6,7 +6,7 @@ import seaborn as sns
 import plotly.express as px
 
 # Налаштування сторінки
-st.set_page_config(page_title="Supermarket Analytics", layout="wide")
+st.set_page_config(page_title="Supermarket", layout="wide")
 st.title("Аналіз популярності супермаркетів")
 
 
