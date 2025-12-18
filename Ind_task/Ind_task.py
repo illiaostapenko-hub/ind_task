@@ -70,8 +70,7 @@ min_rating = st.sidebar.slider("Мін. рейтинг:", min_value=2.5, max_val
 
 # Фільтрація даних
 filtered_df = df[
-    (df['City'] == selected_city) &
-    (df['Rating'] >= min_rating)
+    (df['City'] == selected_city) and (df['Rating'] >= min_rating)
 ]
 
 if filtered_df.empty:
