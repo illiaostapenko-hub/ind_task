@@ -14,12 +14,12 @@ st.title("Аналіз популярності супермаркетів")
 def generate_supermarket_data(n=200):
     np.random.seed(42)
 
-    chains = ['ATB', 'Silpo', 'Novus', 'Auchan', 'Metro', 'Fora']
+    markets = ['ATB', 'Silpo', 'Novus', 'Auchan', 'Metro', 'Fora']
     cities = ['Kyiv', 'Kharkiv', 'Lviv', 'Odesa', 'Dnipro']
 
     data = {
         'Store_ID': range(1, n + 1),
-        'Chain': np.random.choice(chains, size=n),
+        'Market': np.random.choice(markets, size=n),
         'City': np.random.choice(cities, size=n),
         'Square_m': np.random.randint(100, 5000, size=n),       # Площа
         'Daily_Visitors': np.random.randint(200, 3000, size=n), # Базовий трафік
@@ -46,7 +46,7 @@ col1, col2 = st.columns(2) # Дві колонки для статичних г�
 with col1:
     st.subheader("Розподіл середнього чеку")
     fig1, ax1 = plt.subplots(figsize=(10, 6))
-    sns.histplot(data=df, x='Avg_Check_UAH', hue='Chain', kde=True, element="step", ax=ax1)
+    sns.histplot(data=df, x='Avg_Check_UAH', hue='Market', kde=True, element="step", ax=ax1)
     ax1.set_title('Розподіл середнього чеку за мережами')
     st.pyplot(fig1)
 
@@ -87,7 +87,7 @@ else:
         x='Daily_Visitors',
         y='Daily_Revenue',
         size='Square_m',
-        color='Chain',
+        color='Market',
         hover_data=['Store_ID', 'Avg_Check_UAH', 'Rating'],
         title=f'Рейтинг >= {min_rating}',
         labels={'Daily_Visitors': 'Відвідувачів в день', 'Daily_Revenue': 'Денний виторг (грн)'},
@@ -97,5 +97,5 @@ else:
 
     # Таблиця лідерів
     st.subheader("Топ-3 найприбутковіші магазини вибірки:")
-    top_3 = filtered_df.sort_values(by='Daily_Revenue', ascending=False).head(3)[['Chain', 'Daily_Revenue', 'Rating', 'Square_m']]
+    top_3 = filtered_df.sort_values(by='Daily_Revenue', ascending=False).head(3)[['Market', 'Daily_Revenue', 'Rating', 'Square_m']]
     st.dataframe(top_3)
