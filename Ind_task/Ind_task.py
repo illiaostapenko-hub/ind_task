@@ -42,14 +42,12 @@ st.dataframe(df.head())
 col1, col2 = st.columns(2) # Дві колонки для статичних графіків
 
 with col1:
-    st.subheader("Розподіл середнього чеку")
     fig1, ax1 = plt.subplots(figsize=(10, 6))
     sns.histplot(data=df, x='Avg_Check_UAH', hue='Market', kde=True, element="step", ax=ax1)
     ax1.set_title('Розподіл середнього чеку за мережами')
     st.pyplot(fig1)
 
 with col2:
-    st.subheader("Кореляційна матриця")
     fig2, ax2 = plt.subplots(figsize=(10, 8))
     numeric_df = df.select_dtypes(include=[np.number])
     sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm', fmt=".2f", ax=ax2)
