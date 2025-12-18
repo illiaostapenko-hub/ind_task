@@ -9,7 +9,7 @@ import plotly.express as px
 st.set_page_config(page_title="Supermarket", layout="wide")
 st.title("Аналіз популярності супермаркетів")
 
-@st.cache_data
+
 def generate_supermarket_data(n=200):
     np.random.seed(42)
 
