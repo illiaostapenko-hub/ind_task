@@ -7,7 +7,7 @@ import plotly.express as px
 
 # Налаштування сторінки
 st.set_page_config(page_title="Supermarket Analytics", layout="wide")
-st.title("📊 Аналіз популярності супермаркетів")
+st.title("Аналіз популярності супермаркетів")
 
 
 @st.cache_data
